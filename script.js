@@ -22,8 +22,7 @@ function getWeather() {
         const temperature = data.main.temp;
         const description = firstLetter(data.weather[0].description);
         const cityName = data.name;
-        const icon = data.weather[0].icon; // örn: 01d, 02n vb.
-
+        const icon = data.weather[0].icon;
         weatherInfoDiv.innerHTML = `
             <h3>${cityName}</h3>
             <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${description}">
