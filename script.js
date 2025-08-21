@@ -22,17 +22,20 @@ function getWeather() {
         const temperature = data.main.temp;
         const description = firstLetter(data.weather[0].description);
         const cityName = data.name;
+        const icon = data.weather[0].icon; // örn: 01d, 02n vb.
+
         weatherInfoDiv.innerHTML = `
-                    <h3>${cityName}</h3>
-                    <p>Sıcaklık: ${temperature}°C</p>
-                    <p>Hava Durumu: ${description}</p>
-                `;
+            <h3>${cityName}</h3>
+            <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${description}">
+            <p>🌡️ Sıcaklık: ${temperature}°C</p>
+            <p>🌥️ Hava Durumu: ${description}</p>
+        `;
       } else {
-        weatherInfoDiv.innerHTML = `<p>City not found.</p>`;
+        weatherInfoDiv.innerHTML = `<p>Şehir bulunamadı.</p>`;
       }
     })
     .catch((error) => {
-      weatherInfoDiv.innerHTML = `<p>Error fetching data.</p>`;
+      weatherInfoDiv.innerHTML = `<p>Veri alınamadı.</p>`;
       console.error("Error:", error);
     });
 }
