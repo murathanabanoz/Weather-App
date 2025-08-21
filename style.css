@@ -1,35 +1,82 @@
 body {
   font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: #f0f8ff;
 }
 
-.weather-container {
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3); /* Şeffaf beyaz katman */
+  pointer-events: none;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 30px 40px;
+  border-radius: 15px;
   text-align: center;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
-input,
+input[type="text"] {
+  padding: 10px 15px;
+  width: 200px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+  outline: none;
+}
+
 button {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #4facfe;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #00f2fe;
+  color: #333;
+  transform: translateY(-2px);
 }
 
 #weather-info {
-  margin-top: 15px;
-  font-size: 18px;
+  margin-top: 20px;
 }
 
-#get-weather-btn {
-  cursor: pointer;
-  border: none;
-  border: 2px solid rgb(158, 147, 147);
+#weather-info img {
+  width: 80px;
+  height: 80px;
+  animation: float 2s infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
